@@ -36,22 +36,25 @@ kutusutunu=(sutun/3)*3;
 
 int main()
 {
-    printf("Sudoku projesi basliyor!\n");
-    printf("varsayılan sudoku matrisi şu şekildedir : \n");
-    int i,j;
-    int satir, sutun, deger;
-    int matris[9][9]= {
+     int i,j,matris[9][9];
+    FILE *dosya;   //Programın dosyayla olan bağlantısını tutacak değişken
+    dosya=fopen("sudoku.txt", "r");  // sudoku.txt dosyasını okumak amacıyla aç bu dosyayla ilgili bilgiyi dosya değişkeninde tut.
+     if(dosya==NULL){    // dosyayı açamadım mı? sorusunu sorar. evetse hata mesajını verip programı sonlandırabiliriz. 
+        printf("dosya açılamadı \n");
+        return 1;      
+     }
+     
+     for(i=0; i<9; i++){
+        for(j=0; j<9; j++){
+            fscanf(dosya, "%d", &matris[i][j]);
+        }
+     }
+     fclose(dosya);
 
-        {0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0},
-        {0,0,0,0,0,0,0,0,0},
-    };
+    printf("Sudoku projesi basliyor!\n"); 
+    printf("Dosyadan okunan matris şu şekildedir : \n");
+    int satir, sutun, deger;
+    
     for(i=0; i<9; i++){
         for(j=0; j<9; j++){
             printf("%d " , matris[i][j]);
