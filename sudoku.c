@@ -34,6 +34,19 @@ kutusutunu=(sutun/3)*3;
     return 0;
  }
 
+ int tahtadolumu(int matris[][9]){
+int i,j;
+    for(i=0; i<9; i++){
+        for(j=0; j<9; j++){
+            if(matris[i][j]==0){
+                return 0;
+            }
+          
+        }
+    }
+    return 1;
+ }
+
 int main()
 {
      int i,j,matris[9][9];
@@ -106,5 +119,12 @@ for(i=0; i<9; i++){
     }
     printf("\n");
 }
+ if (tahtadolumu(matris)){
+printf("sudokuyu tam dolu. ");
+ }
+else{
+    printf("sudokuyu tam doldunurunuz.");
+}
+
     return 0;
     }
