@@ -44,12 +44,19 @@ int main()
         return 1;      
      }
      
-     for(i=0; i<9; i++){
-        for(j=0; j<9; j++){
-            fscanf(dosya, "%d", &matris[i][j]);
+    for(i=0; i<9; i++)
+{
+    for(j=0; j<9; j++)
+    {
+        if(fscanf(dosya, "%d", &matris[i][j]) != 1) // %d ile 1 tane int degeri okumayı bekleriz. 
+        {
+            printf("Sudoku dosyasi okunurken hata olustu.\n");
+            fclose(dosya);
+            return 1; // main'den çıkarız.program hata nedeniyle sonlandırıldı. 
         }
-     }
-     fclose(dosya);
+    }
+}
+fclose(dosya);
 
     printf("Sudoku projesi basliyor!\n"); 
     printf("Dosyadan okunan matris şu şekildedir : \n");
