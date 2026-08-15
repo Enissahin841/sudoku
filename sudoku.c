@@ -47,6 +47,31 @@ int i,j;
     return 1;
  }
 
+ int satirgecerlimi(int matris[][9],int satir){
+    int j,k;
+    for(j=0; j<9; j++){
+        for(k=j+1; k<9; k++){
+            if(matris[satir][j]==matris[satir][k]){
+                return 0;
+
+            }
+        }
+    }
+    return 1; 
+
+ }
+ int satirlargecerlimi(int matris[][9]){
+int satir; 
+for(satir=0; satir<9; satir++){
+    if(satirgecerlimi(matris,satir)==0){
+        return 0;
+
+    }
+    
+}
+return 1; 
+ }
+
 int main()
 {
      int i,j,matris[9][9];
@@ -126,5 +151,14 @@ else{
     printf("sudokuyu tam doldunurunuz.");
 }
 
-    return 0;
+
+    if(satirlargecerlimi(matris)){
+printf("tüm satırlar geçerlidir");
     }
+    else{
+        printf("satırlardan birinde ya da birkaçında hata");
+    }
+    return 0;
+
+    }
+
