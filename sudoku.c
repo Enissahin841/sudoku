@@ -72,6 +72,83 @@ for(satir=0; satir<9; satir++){
 return 1; 
  }
 
+
+ int sutungecerlimi(int matris[][9],int sutun){
+int i,k;
+for(i=0; i<9; i++){
+    for(k=i+1; k<9; k++){
+        if(matris[i][sutun]==matris[k][sutun])
+        return 0;
+    }
+}
+return 1; 
+ }
+
+ int sutunlargecerlimi(int matris[][9]){
+    int sutun;
+    for(sutun=0; sutun<9; sutun++){
+        if(sutungecerlimi(matris,sutun)==0){
+            return 0;
+        }
+    }
+    return 1; 
+ }
+
+ int kutugecerlimi(int matris[][9], int kutu){
+    int kutubaslangicsatiri= (kutu/3)*3;
+    int kutubaslangicsutunu= (kutu % 3)*3;
+int i,j,k,l;  // iki farklı hücrenin konumunu karşılaştıracağız bu yüzden iki farklı konum gerek.
+    for(i=0; i<3; i++ ){
+        for(j=0; j<3; j++){
+
+        for(k = i; k < 3; k++)
+            {
+                  for(l = 0; l < 3; l++)
+                {
+             if(k == i && l <= j)//aynı satırda seçilen hücrenin solundaki hücreleri ve aynı hücreleri terkardan karşılaştırmamak için
+                    {
+                        continue;
+                    }
+
+             if(matris[kutubaslangicsatiri + i][kutubaslangicsutunu + j] ==
+                       matris[kutubaslangicsatiri + k][kutubaslangicsutunu + l])
+                    {
+                        return 0;
+        }
+    }
+}
+        }
+    }
+    return 1; 
+
+ }
+ int kutulargecerlimi(int matris[][9]){
+
+    int kutu;
+    for(kutu=0; kutu<9; kutu++){
+        if(kutugecerlimi(matris,kutu)==0){
+            return 0;
+        }
+    }
+    return 1; 
+
+ }
+
+ int sudokugecerlimi(int matris[][9]){
+    if(satirlargecerlimi(matris)==0){
+        return 0;
+    }
+    if (sutunlargecerlimi(matris)==0){
+        return 0;
+    }
+    if(kutulargecerlimi(matris)==0){
+        return 0; 
+    }
+    return 1;
+ }
+
+
+
 int main()
 {
      int i,j,matris[9][9];
@@ -158,6 +235,16 @@ printf("tüm satırlar geçerlidir");
     else{
         printf("satırlardan birinde ya da birkaçında hata");
     }
+
+    if(sudokugecerlimi(matris)){
+        printf("tebrikler oyunu kazandınız.");
+    }
+    else{
+        printf("oyununuz başarısız.");
+    }
+
+
+
     return 0;
 
     }
