@@ -185,7 +185,7 @@ fclose(dosya);
     }
 
     printf("sudokuda değiştirmek istediğiniz konumu ardından değerleri giriniz.\n");
-    printf("ilk istenilen satır gireceğiniz kısıma 0 girerek döngüden çıkabilirsiniz. \n");
+    printf("ilk istenilen satır gireceğiniz kısıma 0 girdiğinzde oyununuzun sonucunu görebilirsiniz. \n");
 
    while(1){
     printf("değiştirmek istediğiniz satırı giriniz :");
@@ -209,9 +209,9 @@ fclose(dosya);
         printf("3x3 kutuda zaten bu sayı var.\n");
         continue;
     }
-    else{
+    
         matris[satir-1][sutun-1]=deger;
-    }
+    
    }
 
 printf("oluşturduğunuz matris şu şekildedir :\n");
@@ -221,30 +221,19 @@ for(i=0; i<9; i++){
     }
     printf("\n");
 }
- if (tahtadolumu(matris)){
-printf("sudokuyu tam dolu. ");
- }
-else{
-    printf("sudokuyu tam doldunurunuz.");
-}
 
 
-    if(satirlargecerlimi(matris)){
-printf("tüm satırlar geçerlidir");
-    }
-    else{
-        printf("satırlardan birinde ya da birkaçında hata");
-    }
-
+if(tahtadolumu(matris)){
     if(sudokugecerlimi(matris)){
-        printf("tebrikler oyunu kazandınız.");
+        printf("sudoku başarılı, tebrikler.");
     }
     else{
-        printf("oyununuz başarısız.");
+        printf("sudoku başarısız!");
     }
-
-
-
+}
+else{
+    printf("tahta tam dolu değil!");
+}
     return 0;
 
     }
