@@ -195,11 +195,13 @@ fclose(dosya);
         if(tahtadolumu(matris)){
             if(sudokugecerlimi(matris)){
                 printf("sudoku başarılı.tebrikler");
-                break;
+            
             }
             else{
                 printf("sudoku başarısız");
+                
             }
+            break;
         }
         else{
             printf("lütfen sudokuyu doldurunuz.");
