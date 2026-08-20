@@ -191,8 +191,21 @@ fclose(dosya);
     printf("değiştirmek istediğiniz satırı giriniz :");
     scanf("%d", &satir);
     if(satir==0){
-        break;
-    }
+
+        if(tahtadolumu(matris)){
+            if(sudokugecerlimi(matris)){
+                printf("sudoku başarılı.tebrikler");
+                break;
+            }
+            else{
+                printf("sudoku başarısız");
+            }
+        }
+        else{
+            printf("lütfen sudokuyu doldurunuz.");
+            continue;
+        }
+        }
     printf("değiştirmek istediğiniz sütunu giriniz :");
     scanf("%d",&sutun);
     printf("girdiğiniz konumdaki değeri değiştiniz :");
@@ -222,18 +235,6 @@ for(i=0; i<9; i++){
     printf("\n");
 }
 
-
-if(tahtadolumu(matris)){
-    if(sudokugecerlimi(matris)){
-        printf("sudoku başarılı, tebrikler.");
-    }
-    else{
-        printf("sudoku başarısız!");
-    }
-}
-else{
-    printf("tahta tam dolu değil!");
-}
     return 0;
 
     }
