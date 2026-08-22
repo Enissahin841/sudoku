@@ -190,6 +190,10 @@ fclose(dosya);
    while(1){
     printf("değiştirmek istediğiniz satırı giriniz :");
     scanf("%d", &satir);
+    if(satir<0 || satir>9){
+        printf("hatalı giriş, satır için 1 ile 9 arası bir sayı girmelisiniz. 0 ise sonuçları gösterir.\n");
+        continue;
+    }
     if(satir==0){
 
         if(tahtadolumu(matris)){
@@ -204,14 +208,22 @@ fclose(dosya);
             break;
         }
         else{
-            printf("lütfen sudokuyu doldurunuz.");
+            printf("lütfen sudokuyu doldurunuz.\n");
             continue;
         }
         }
     printf("değiştirmek istediğiniz sütunu giriniz :");
     scanf("%d",&sutun);
+    if(sutun<1 || sutun>9){
+        printf("hatalı giriş,sütun için 1 ile 9 arası bir değer girmelisiniz.\n");
+        continue;
+    }
     printf("girdiğiniz konumdaki değeri değiştiniz :");
     scanf("%d",&deger);
+    if(deger<1 || deger>9){
+        printf("hatalı giriş, sudoku için 1 ile 9 arası bir değer girmelisiniz.\n");
+        continue;
+    }
     if(satirdavarmi(matris,satir-1,deger)){
         printf("satırda bu sayı zaten var. tekrar deneyiniz.\n");
         continue;
@@ -240,4 +252,3 @@ for(i=0; i<9; i++){
     return 0;
 
     }
-
